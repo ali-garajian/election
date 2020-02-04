@@ -132,7 +132,6 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
                 // let the user know branch's id is received and mark the retrieve data button
                 qrcodeSuccessMessage.classList.add("d-block");
                 retrieve_data_btn.removeAttribute("disabled");
-                mainContent.classList.add("d-none");
               }
             );
 
@@ -140,6 +139,8 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
 
             scannerContainer.classList.add("scanner-container--show");
             document.body.classList.add("body--set-as-background");
+            mainContent.classList.add("d-none");
+
           } else {
             new Snack({
               state: "error",
