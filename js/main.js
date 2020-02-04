@@ -103,11 +103,9 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
     });
 
     qrcode__scanner__closebtn.addEventListener("click", () => {
-      document
-        .querySelector(".scanner-container")
-        .classList.remove("scanner-container--show");
-
+      scannerContainer.classList.remove("scanner-container--show");
       document.body.classList.remove("body--set-as-background");
+      mainContent.classList.remove("d-none");
     });
 
     barcodeInput.addEventListener("input", handleInputChange);
@@ -140,7 +138,6 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
             scannerContainer.classList.add("scanner-container--show");
             document.body.classList.add("body--set-as-background");
             mainContent.classList.add("d-none");
-
           } else {
             new Snack({
               state: "error",
