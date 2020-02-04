@@ -9,7 +9,7 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
 
   function ready() {
     // SETTING UP QRSCANNER
-    QrScanner.WORKER_PATH = "../lib/js/qr-scanner-worker.min.js";
+    QrScanner.WORKER_PATH = "./lib/js/qr-scanner-worker.min.js";
 
     //   APP CONSTANTS
     var OPTIONS_LOADING = "در حال بارگزاری ...";
