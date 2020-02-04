@@ -37,6 +37,7 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
     var qrcode__scanner__closebtn = document.querySelector(
       ".qrcode__scanner__closebtn"
     );
+    var scannerContainer = document.querySelector(".scanner-container");
 
     // ADDING EVENT LISTENERS
     document
@@ -88,16 +89,18 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
               document.getElementById("qrcode-preview"),
               result => {
                 console.log(result);
+                
+                scannerContainer.classList.remove("scanner-container--show");
+                document.body.classList.remove("body--set-as-background");
+
                 qrscanner.destroy();
               }
             );
-console.log(qrscanner)
+
             qrscanner.start();
 
-            let scannerContainer = document.querySelector(".scanner-container");
-            let body = document.body;
             scannerContainer.classList.add("scanner-container--show");
-            body.classList.add("body--set-as-background");
+            document.body.classList.add("body--set-as-background");
           } else {
             new Snack({
               state: "error",
