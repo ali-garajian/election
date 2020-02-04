@@ -1,3 +1,5 @@
+import QrScanner from "../lib/js/qr-scanner.min.js";
+
 (function() {
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", ready);
@@ -6,6 +8,9 @@
   }
 
   function ready() {
+    // SETTING UP QRSCANNER
+    QrScanner.WORKER_PATH = "../lib/js/qr-scanner-worker.min.js";
+
     //   APP CONSTANTS
     var OPTIONS_LOADING = "در حال بارگزاری ...";
 
@@ -76,32 +81,35 @@
 
     // EVENT HADNLERS
     function handleClick_startScan() {
-      let scanner = new Instascan.Scanner({
-        video: document.getElementById("qrcode-preview")
-      });
-      scanner.addListener("scan", function(content) {
-        console.log(content);
-      });
+      QrScanner.hasCamera()
+        .then(hasCamera => {
+          if (hasCamera) {
+            let qrscanner = new QrScanner(
+              document.getElementById("qrcode-preview"),
+              result => {
+                console.log(result);
+                qrscanner.destroy();
+              }
+            );
 
-      Instascan.Camera.getCameras()
-        .then(function(cameras) {
-          console.log("got here");
-          if (cameras.length > 0) {
-            // display the scanner preview section and start the camera continously
+            qrscanner.start();
+
             let scannerContainer = document.querySelector(".scanner-container");
             let body = document.body;
             scannerContainer.classList.add("scanner-container--show");
             body.classList.add("body--set-as-background");
-
-            cameras[1] ? scanner.start(cameras[1]) : scanner.start(cameras[0]);
           } else {
             new Snack({
               state: "error",
               message: "دوربینی برای اسکن پیدا نشد"
             }).show();
+
+            document
+              .getElementsByTagName("html")[0]
+              .classList.add("no-getusermedia");
           }
         })
-        .catch(error => {
+        .catch(e => {
           document
             .getElementsByTagName("html")[0]
             .classList.add("no-getusermedia");
