@@ -1,4 +1,5 @@
 (function() {
+  var IS_SNACK_SHOWN = false;
   function Snack(options) {
     // set body's position to relative so snack can be positioned accordingly
     document.body.classList.add("snack-compatible-body");
@@ -24,18 +25,24 @@
       });
 
     Snack.prototype.show = function() {
-      document.body.appendChild(this.snack);
-      this.snack.style.bottom = "10px";
+      if (!IS_SNACK_SHOWN) {
+        IS_SNACK_SHOWN = true;
+        document.body.appendChild(this.snack);
+        setTimeout(() => {
+          this.snack.style.bottom = "10px";
+        }, 10);
 
-      setTimeout(
-        () => {
-          this.hide();
-        },
-        options.timeout ? options.timeout : 3000
-      );
+        setTimeout(
+          () => {
+            this.hide();
+          },
+          options.timeout ? options.timeout : 4000
+        );
+      }
     };
 
     Snack.prototype.hide = function() {
+      IS_SNACK_SHOWN = false;
       this.snack.style.bottom = "-100%";
       setTimeout(() => {
         this.snack.remove();

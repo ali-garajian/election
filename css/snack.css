@@ -23,7 +23,8 @@
 }
 .snack-message {
   text-align: center;
-  margin: 0 auto
+  margin: 0 auto;
+  font-size: 13px;
 }
 .snack-error {
     background-color: red;

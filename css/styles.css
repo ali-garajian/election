@@ -179,6 +179,11 @@ body {
   height: 100vh;
   position: relative;
 }
+.qrcode__success {
+  display: none;
+  color: green;
+  text-align: center;
+}
 
 /******************************************************
 3.2- Main Wrapper Section #2 : barcode input
@@ -257,6 +262,7 @@ body {
   top: 100%;
   left: 0;
   background-color: white;
+  overflow: auto;
 }
 .autocomplete__options__infotext {
   padding: 20px 0;
@@ -288,6 +294,7 @@ body {
 .d-none {
   display: none !important;
 }
+
 
 /******************************************************
 5- Keyframes and Animations

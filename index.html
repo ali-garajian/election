@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./fonts/icomoon/style.css">
     <link rel="stylesheet" href="./css/snack.css">
+    <link rel="stylesheet" href="./css/modal.css">
 
     <!-- scripts -->
     <script src="./lib/js/modernizr-custom.js"></script>
     <script src="./js/main.js" type="module"></script>
     <script src="./js/SnackService.js"></script> 
+    <script src="./js/Modal/ModalService.js"></script>
+    <script src="./js/Modal/BranchModal.js"></script>
 
     <title>انتخاب حوزه</title>
 </head>
@@ -31,7 +34,7 @@
         <div class="tab-panes">
             <section class="tab-panel active-pane qrcode">
                 <div class="qrcode__errormessage">
-                    متاسفانه دستگاه شما امکان دسترسی به مشخصات حوزه با اسکن QRCode را ندارد.    
+                    متاسفانه دستگاه شما امکان اسکن QRCode را ندارد.    
                 </div>
                 <div class="qrcode__title">
                     حوزه مورد نظر را با اسکن QRCode حوزه انتخاب نمایید
@@ -40,6 +43,9 @@
                     <button type="button" class="qrcode__scanner__btn" title="اسکن کنید">
                         <img src="./img/qrcode_placeholder.png" alt="scan qrcode" class="qrcode__scanner__img" />
                     </button>
+                </div>
+                <div class="qrcode__success">
+                    شناسه حوزه خوانده شد. برای دریافت اطلاعات حوزه روی دکمه زیر کلیک کنید.
                 </div>
             </section>
             <section class="tab-panel barcode">
@@ -63,7 +69,7 @@
                 </div>
             </section>
         </div>
-        <button type="button" class="retrieve-branch-info">بازیابی اطلاعات حوزه</button>
+        <button disabled type="button" class="retrieve-branch-info">بازیابی اطلاعات حوزه</button>
     </main>
 </body>
 </html>
