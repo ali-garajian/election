@@ -48,6 +48,7 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
     var qrcodeSuccessMessage = document.querySelector(".qrcode__success");
     var barcodeInput = document.querySelector(".barcode__input");
     var autocompleteInput = document.querySelector(".autocomplete__input");
+    var mainContent = document.querySelector(".main-content");
 
     // ADDING EVENT LISTENERS
     document
@@ -71,7 +72,6 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
     });
 
     retrieve_data_btn.addEventListener("click", handleClick_retrieveBranchInfo);
-    retrieve_data_btn.addEventListener("mouseover", handleMouseDown_retrieveDataBtn);
 
     tabHeaders.forEach((tabHeader, index) => {
       tabHeader.addEventListener("click", () => {
@@ -125,12 +125,14 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
 
                 scannerContainer.classList.remove("scanner-container--show");
                 document.body.classList.remove("body--set-as-background");
+                mainContent.classList.remove("d-none");
 
                 qrscanner.destroy();
 
                 // let the user know branch's id is received and mark the retrieve data button
                 qrcodeSuccessMessage.classList.add("d-block");
                 retrieve_data_btn.removeAttribute("disabled");
+                mainContent.classList.add("d-none");
               }
             );
 
@@ -171,10 +173,6 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
         return;
       }
       retrieve_data_btn.removeAttribute("disabled");
-    }
-    function handleMouseDown_retrieveDataBtn() {
-      console.log('got here')
-      console.log(this)
     }
 
     //   UTILITY FUNCTIONS
