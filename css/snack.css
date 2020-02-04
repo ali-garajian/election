@@ -1,0 +1,39 @@
+.snack-compatible-body {
+    position: relative;
+    overflow: hidden;
+}
+.snack {
+  position: absolute;
+  bottom: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition-property: bottom;
+  transition-timing-function: ease;
+  transition-duration: 1s;
+  width: calc(150px + 10vw);
+  padding: 10px 5px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.snack-close-btn {
+  padding: 5px;
+  font-size: 22px;
+  cursor: pointer;
+}
+.snack-message {
+  text-align: center;
+  margin: 0 auto
+}
+.snack-error {
+    background-color: red;
+    color: white;
+}
+.snack-success {
+    background-color: green;
+    color: white;
+}
+.snack-info {
+    background-color: lightblue;
+    color: white;
+}

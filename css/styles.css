@@ -1,0 +1,306 @@
+/* 
+    Table of Content:
+    1- General stuff
+    2- Typography
+    3- Main Wrapper
+     3.1- Main Wrapper Section #1 : qrcode scanner
+     3.2- Main Wrapper Section #2 : barcode input
+     3.3- Main Wrapper Section #3 : autocomplete list
+    4- Helper Classes to use in JS
+    5- Keyframes and Animations
+    6- Media Queries
+*/
+
+/******************************************************
+1- General Stuff 
+*******************************************************/
+*,
+*::after,
+*::before {
+  direction: rtl;
+  box-sizing: border-box;
+  font-family: "Vazir";
+}
+.retrieve-branch-info {
+  width: 50%;
+  margin: 50px auto 10px auto;
+  padding: 10px;
+}
+
+/******************************************************
+2- Typography
+*******************************************************/
+@font-face {
+  font-family: "Vazir";
+  src: url("../fonts/Vazir.woff") format("woff"),
+    url("../fonts/Vazir.ttf") format("truetype"),
+    url("../fonts/Vazir.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/******************************************************
+3- Main Wrapper
+*******************************************************/
+body {
+  margin: 0;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../img/bg-pattern.png);
+  background-color: #eee;
+}
+.main-content {
+  width: calc(450px + 10vw);
+  max-width: 90%;
+  min-height: calc(400px + 10vh);
+  text-align: center;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: rgba(256, 256, 256, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 10px rgba(0, 0, 0, 0.1);
+}
+.tab-panes {
+  position: relative;
+  min-height: 200px;
+}
+.tab-panel {
+  position: absolute;
+  opacity: 0;
+  z-index: -10;
+  transition: 0.2s;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+}
+.active-pane {
+  opacity: 1;
+  z-index: 10;
+}
+.tab-headers {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  margin: 30px auto 50px auto;
+}
+.tab-header {
+  width: calc(55px + 1.6vw);
+  height: calc(55px + 1.6vw);
+  background-size: contain;
+  box-sizing: content-box;
+  position: relative;
+  cursor: pointer;
+}
+.tab-header.active::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: calc(5px + 1vw);
+  box-sizing: content-box;
+  left: calc((5px + 1vw) * -1);
+  top: calc((5px + 1vw) * -1);
+  border-radius: 5px;
+}
+.tab-header-qrcode {
+  background-image: url(../img/qrcode-icon.png);
+}
+.tab-header-barcode {
+  background-image: url(../img/typing-icon.png);
+}
+.tab-header-list {
+  background-image: url(../img/list-icon.png);
+}
+
+.no-getusermedia .qrcode__scanner,
+.no-getusermedia .qrcode__title {
+  display: none;
+}
+.no-getusermedia .qrcode__errormessage {
+  display: block;
+}
+
+/******************************************************
+3.1- Main Wrapper Section #1 : qrcode scanner
+*******************************************************/
+.qrcode__title,
+.qrcode__errormessage {
+  padding: 10px;
+}
+.qrcode__errormessage {
+  display: none;
+  color: red;
+}
+.qrcode__scanner__btn {
+  padding: 0;
+  margin: 10px;
+  height: 84px;
+}
+.qrcode__scanner__btn:focus {
+  outline: none;
+}
+.qrcode__scanner__img {
+  width: 80px;
+  height: 80px;
+}
+.qrcode__scanner__preview {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) !important;
+  width: 100vw;
+  transition: 0.4s;
+}
+.qrcode__scanner__closebtn {
+  position: absolute;
+  font-size: 20px;
+  color: white;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scanner-container {
+  display: none;
+  height: 100vh;
+  position: relative;
+}
+
+/******************************************************
+3.2- Main Wrapper Section #2 : barcode input
+*******************************************************/
+.barcode__title {
+  padding: 10px;
+}
+.barcode__input {
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: calc(50% + 5vw);
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+.barcode__input:hover,
+.barcode__input:focus {
+  border-color: rgba(0, 0, 0, 0.3);
+  outline: none;
+}
+
+/******************************************************
+3.3- Main Wrapper Section #3 : autocomplete list
+*******************************************************/
+.list__title {
+  padding: 10px;
+}
+.autocomplete {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: calc(50% + 5vw);
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 4px;
+  transition: 0.3s;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+.autocomplete:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+.autocomplete__input {
+  border: none;
+  padding: 5px 0;
+  width: 80%;
+}
+.autocomplete__input:focus {
+  outline: none;
+}
+.autocomplete__dropdownicon,
+.autocomplete__dropupicon {
+  color: rgba(0, 0, 0, 0.5);
+}
+.autocomplete__dropupicon {
+  display: none;
+}
+.autocomplete__loadingicon {
+  display: none;
+  width: 25px;
+  height: 25px;
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #3498db; /* Blue */
+  border-radius: 50%;
+  animation-name: circualrLoading;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.autocomplete__options {
+  display: none;
+  width: 100%;
+  height: calc(150px + 5vw);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+}
+.autocomplete__options__infotext {
+  padding: 20px 0;
+}
+.autocomplete__listItem {
+  width: 100%;
+  padding: 5px 0;
+  transition: 0.3s;
+  background-color: white;
+}
+.autocomplete__listItem:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/******************************************************
+4- Helper Classes to use in JS
+*******************************************************/
+.scanner-container--show {
+  display: block;
+  z-index: 10;
+}
+.body--set-as-background {
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.d-block {
+  display: block !important;
+}
+.d-none {
+  display: none !important;
+}
+
+/******************************************************
+5- Keyframes and Animations
+*******************************************************/
+@keyframes circualrLoading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/******************************************************
+6- Media Queries
+*******************************************************/

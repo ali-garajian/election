@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- style sheeets -->
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./fonts/icomoon/style.css">
+    <link rel="stylesheet" href="./css/snack.css">
+
+    <!-- scripts -->
+    <script src="/public/lib/js/instascan.min.js"></script>
+    <script src="/public/js/main.js"></script>
+    <script src="/public/js/SnackService.js"></script>
+
+    <title>انتخاب حوزه</title>
+</head>
+<body>
+    <main class="main-content">
+        <section class="qrcode">
+            <div class="qrcode__title">
+                حوزه مورد نظر را با اسکن QRCode حوزه انتخاب نمایید
+            </div>
+            <div class="qrcode__scanner">
+                <video id="qrcode-preview" class="qrcode__scanner__preview"></video>
+                <button type="button" class="qrcode__scanner__btn" title="اسکن کنید">
+                    <img src="/public/img/qrcode_placeholder.png" alt="scan qrcode" class="qrcode__scanner__img" />
+                </button>
+            </div>
+        </section>
+        <section class="barcode">
+            <div class="barcode__title">
+                حوزه مورد نظر را با وارد کردن دستی بارکد انتخاب نمایید
+            </div>
+            <input class="barcode__input"></input>
+        </section>
+        <section class="list">
+            <div class="list__title">
+                حوزه مورد نظر را از لیست انتخاب نمایید
+            </div>
+            <div class="autocomplete">
+                <span class="icon-sort-desc autocomplete__dropdownicon"></span>
+                <span class="icon-caret-up autocomplete__dropupicon"></span>
+                <span class="autocomplete__loadingicon"></span>
+                <input type="text" class="autocomplete__input"></input>
+                <div class="autocomplete__options">
+                    <div class="autocomplete__options__infotext">در حال بارگزاری ...</div>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="retrieve-branch-info">بازیابی اطلاعات حوزه</button>
+    </main>
+</body>
+</html>
