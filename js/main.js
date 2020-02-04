@@ -91,7 +91,7 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
                 qrscanner.destroy();
               }
             );
-
+console.log(qrscanner)
             qrscanner.start();
 
             let scannerContainer = document.querySelector(".scanner-container");
