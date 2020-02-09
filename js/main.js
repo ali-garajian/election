@@ -49,6 +49,8 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
     var barcodeInput = document.querySelector(".barcode__input");
     var autocompleteInput = document.querySelector(".autocomplete__input");
     var mainContent = document.querySelector(".main-content");
+    var tabPanesContainer = document.querySelector(".tab-panes");
+    var mainTopHeader = document.querySelector(".header__top-header");
 
     // ADDING EVENT LISTENERS
     document
@@ -75,6 +77,9 @@ import QrScanner from "../lib/js/qr-scanner.min.js";
 
     tabHeaders.forEach((tabHeader, index) => {
       tabHeader.addEventListener("click", () => {
+        tabPanesContainer.classList.add("d-block");
+        mainTopHeader.classList.add("d-none");
+        
         tabPanes.forEach(pane => pane.classList.remove("active-pane"));
         tabHeaders.forEach(header => header.classList.remove("active"));
 

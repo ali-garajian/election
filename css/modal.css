@@ -2,7 +2,7 @@
   opacity: 0;
   z-index: -10;
   transition: opacity 1s ease;
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -57,7 +57,7 @@
 }
 .modal-overlay {
   display: none;
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);

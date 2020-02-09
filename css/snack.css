@@ -1,9 +1,8 @@
 .snack-compatible-body {
     position: relative;
-    overflow: hidden;
 }
 .snack {
-  position: absolute;
+  position: fixed;
   bottom: -100%;
   left: 50%;
   transform: translateX(-50%);

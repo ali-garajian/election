@@ -9,48 +9,69 @@
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./fonts/icomoon/style.css">
     <link rel="stylesheet" href="./css/snack.css">
+    <link rel="stylesheet" href="./css/modal.css">
 
     <!-- scripts -->
-    <script src="/public/lib/js/instascan.min.js"></script>
-    <script src="/public/js/main.js"></script>
-    <script src="/public/js/SnackService.js"></script>
+    <script src="./lib/js/modernizr-custom.js"></script>
+    <script src="./js/main.js" type="module"></script>
+    <script src="./js/SnackService.js"></script> 
+    <script src="./js/Modal/ModalService.js"></script>
+    <script src="./js/Modal/BranchModal.js"></script>
 
     <title>انتخاب حوزه</title>
 </head>
 <body>
+    <div class="scanner-container">
+        <video id="qrcode-preview" class="qrcode__scanner__preview"></video>
+        <span class="qrcode__scanner__closebtn">&times;</span>
+    </div>
     <main class="main-content">
-        <section class="qrcode">
-            <div class="qrcode__title">
-                حوزه مورد نظر را با اسکن QRCode حوزه انتخاب نمایید
-            </div>
-            <div class="qrcode__scanner">
-                <video id="qrcode-preview" class="qrcode__scanner__preview"></video>
-                <button type="button" class="qrcode__scanner__btn" title="اسکن کنید">
-                    <img src="/public/img/qrcode_placeholder.png" alt="scan qrcode" class="qrcode__scanner__img" />
-                </button>
-            </div>
-        </section>
-        <section class="barcode">
-            <div class="barcode__title">
-                حوزه مورد نظر را با وارد کردن دستی بارکد انتخاب نمایید
-            </div>
-            <input class="barcode__input"></input>
-        </section>
-        <section class="list">
-            <div class="list__title">
-                حوزه مورد نظر را از لیست انتخاب نمایید
-            </div>
-            <div class="autocomplete">
-                <span class="icon-sort-desc autocomplete__dropdownicon"></span>
-                <span class="icon-caret-up autocomplete__dropupicon"></span>
-                <span class="autocomplete__loadingicon"></span>
-                <input type="text" class="autocomplete__input"></input>
-                <div class="autocomplete__options">
-                    <div class="autocomplete__options__infotext">در حال بارگزاری ...</div>
+        <h1 class="custom-h1">سامانه مبارزه با تخلفات انتخاباتی</h1>
+        <img class="hero-img" src="" alt="electoral fruad control system" />
+        <div class="tab-headers">
+            <div class="tab-header active tab-header-qrcode"></div>
+            <div class="tab-header tab-header-barcode"></div>
+            <div class="tab-header tab-header-list"></div>
+        </div>
+        <div class="tab-panes">
+            <section class="tab-panel active-pane qrcode">
+                <div class="qrcode__errormessage">
+                    متاسفانه دستگاه شما امکان اسکن QRCode را ندارد.    
                 </div>
-            </div>
-        </section>
-        <button type="button" class="retrieve-branch-info">بازیابی اطلاعات حوزه</button>
+                <!-- <div class="qrcode__title">
+                    حوزه مورد نظر را با اسکن QRCode حوزه انتخاب نمایید
+                </div> -->
+                <div class="qrcode__scanner">
+                    <button type="button" class="qrcode__scanner__btn" title="اسکن کنید">
+                        <img src="./img/qrcode_placeholder.png" alt="scan qrcode" class="qrcode__scanner__img" />
+                    </button>
+                </div>
+                <div class="qrcode__success">
+                    شناسه حوزه خوانده شد. برای دریافت اطلاعات حوزه روی دکمه زیر کلیک کنید.
+                </div>
+            </section>
+            <section class="tab-panel barcode">
+                <!-- <div class="barcode__title">
+                    حوزه مورد نظر را با وارد کردن دستی بارکد انتخاب نمایید
+                </div> -->
+                <input class="barcode__input"></input>
+            </section>
+            <section class="tab-panel list">
+                <!-- <div class="list__title">
+                    حوزه مورد نظر را از لیست انتخاب نمایید
+                </div> -->
+                <div class="autocomplete">
+                    <span class="icon-sort-desc autocomplete__dropdownicon"></span>
+                    <span class="icon-caret-up autocomplete__dropupicon"></span>
+                    <span class="autocomplete__loadingicon"></span>
+                    <input type="text" class="autocomplete__input"></input>
+                    <div class="autocomplete__options">
+                        <div class="autocomplete__options__infotext">در حال بارگزاری ...</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <button disabled type="button" class="retrieve-branch-info">بازیابی اطلاعات حوزه</button>
     </main>
 </body>
 </html>
