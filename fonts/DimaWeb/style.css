@@ -1,0 +1,13 @@
+/* font converted using font-converter.net. thank you! */
+@font-face {
+  font-family: "DimaWeb";
+  src: url("./fonts/DIMAWEB.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/DIMAWEB.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./fonts/DIMAWEB.otf") format("opentype"), /* Open Type Font */
+    url("./fonts/DIMAWEB.svg") format("svg"), /* Legacy iOS */
+    url("./fonts/DIMAWEB.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("./fonts/DIMAWEB.woff") format("woff"), /* Modern Browsers */
+    url("./fonts/DIMAWEB.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
