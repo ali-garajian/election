@@ -220,6 +220,8 @@ body {
   display: none;
   color: green;
   text-align: center;
+  white-space: pre-line;
+  padding: 0 10px;
 }
 
 /******************************************************
