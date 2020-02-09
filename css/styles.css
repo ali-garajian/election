@@ -29,6 +29,7 @@
   background-color: rgb(49, 193, 120);
   color: white;
   border: none;
+  font-size: calc(0.8rem + 1vw);
 }
 button[disabled] {
   background-color: rgb(49, 193, 120, 0.5);
